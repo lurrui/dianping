@@ -146,4 +146,30 @@ class Client extends \Demokn\Dianping\Client
             'receipt_code_infos' => $receiptCodeInfos,
         ]);
     }
+
+    /**
+     * 根据手机号查询用户 团购列表
+     * https://openapi.dianping.com/router/tuangou/receipt/querybymobile
+     * @param string $mobile
+     * @param int $deal_group_id
+     * @param int $deal_id
+     * @param int $offset
+     * @param int $limit
+     * @param string $openShopUuid
+     * @param int $platform
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @return array|\Psr\Http\Message\ResponseInterface
+     */
+    public function querybymobile(string $mobile, int $deal_group_id, int $deal_id,int $offset, int $limit ,string $openShopUuid,int $platform)
+    {
+        return $this->httpGet('tuangou/deal/queryshopdeal', [
+            'mobile' =>$mobile,
+            'deal_group_id'=>$deal_group_id,
+            'deal_id'=>$deal_id,
+            'offset' => $offset,
+            'limit' => $limit,
+            'openShopUuid' => $openShopUuid,
+            'platform' => $platform,
+        ]);
+    }
 }
