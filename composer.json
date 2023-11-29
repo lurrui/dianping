@@ -1,17 +1,17 @@
 {
-  "name": "demokn/dianping",
+  "name": "lurrui/dianping",
   "type": "library",
   "description": "美团点评北极星开放平台SDK",
   "keywords": [
     "美团点评",
     "北极星开放平台"
   ],
-  "homepage": "https://github.com/demokn/dianping",
+  "homepage": "https://github.com/lurrui/dianping",
   "license": "MIT",
   "authors": [
     {
-      "name": "demokn",
-      "email": "demo.knyang@gmail.com"
+      "name": "lurrui",
+      "email": "26613480@qq.com"
     }
   ],
   "autoload": {
