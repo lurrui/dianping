@@ -25,7 +25,7 @@
     }
   },
   "require": {
-    "php": "^7.2",
+    "php": "^8.0",
     "guzzlehttp/guzzle": "^6.2",
     "symfony/http-foundation": "^4.0|^5.0",
     "pimple/pimple": "^3.3"
