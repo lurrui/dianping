@@ -10,11 +10,11 @@ class Client extends \Demokn\Dianping\Client
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @return array|\Psr\Http\Message\ResponseInterface
      */
-    public function prepareReceipt(string $receiptCode, string $openShopUuid, string $session)
+    public function prepareReceipt(string $receipt_code, string $open_shop_uuid, string $session)
     {
         return $this->httpPost('router/tuangou/receipt/prepare', [
-            'receipt_code' => $receiptCode,
-            'open_shop_uuid' => $openShopUuid,
+            'receipt_code' => $receipt_code,
+            'open_shop_uuid' => $open_shop_uuid,
             'session' => $session,
         ]);
     }
@@ -160,16 +160,16 @@ class Client extends \Demokn\Dianping\Client
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @return array|\Psr\Http\Message\ResponseInterface
      */
-    public function querybymobile(string $mobile, int $deal_group_id, int $deal_id,int $offset, int $limit ,string $openShopUuid,int $platform)
+    public function querybymobile(string $mobile, int|string $deal_group_id, int|string $deal_id,int $offset, int $limit ,string $open_shop_uuid,int $platform)
     {
-        return $this->httpGet('tuangou/deal/queryshopdeal', [
+        return $this->httpGet('router/tuangou/receipt/querybymobile', [
             'mobile' =>$mobile,
             'deal_group_id'=>$deal_group_id,
             'deal_id'=>$deal_id,
             'offset' => $offset,
             'limit' => $limit,
-            'openShopUuid' => $openShopUuid,
-            'platform' => $platform,
+            'open_shop_uuid' => $open_shop_uuid,
+            'platform'=>$platform
         ]);
     }
 }

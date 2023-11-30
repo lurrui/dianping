@@ -28,6 +28,8 @@ class Client
         $this->app = $app;
     }
 
+
+
     protected function signature(array $params)
     {
         // 参数排序
@@ -37,19 +39,15 @@ class Client
         // 把所有参数名和参数值串在一起
         $query = '';
         foreach ($params as $key => $value) {
-            if ($key && $value) {
-                $query .= $key.$value;
-            }
+            $query .= $key.$value;
         }
-
         // 使用MD5/HMAC加密
         if (isset($params['sign_method']) && $params['sign_method'] == 'HMAC') {
             $sign = hash_hmac('MD5', $query, $this->app->config->get('app_secret'));
+
         } else {
             $sign = md5($this->app->config->get('app_secret').$query.$this->app->config->get('app_secret'));
         }
-
-        // 把二进制转化为小写的十六进制
         return strtolower($sign);
     }
 
@@ -66,8 +64,8 @@ class Client
         if ($withCommonParams) {
             $query = array_merge($this->getCommonParams(), $query);
             $query['sign'] = $this->signature($query);
-        }
 
+        }
         return $this->request($url, 'GET', ['query' => $query]);
     }
 
@@ -113,10 +111,11 @@ class Client
     protected function getCommonParams()
     {
         return [
+            'session' => $this->app->config->get('session'),
             'app_key' => $this->app->config->get('app_key'),
             'timestamp' => $this->getTimestamp(),
             'format' => 'json',
-            'v' => 1,
+            'v' => "1",
             'sign_method' => 'MD5',
         ];
     }
